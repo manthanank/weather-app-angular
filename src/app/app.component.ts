@@ -11,8 +11,9 @@ export class AppComponent {
   show = false;
   temp = [];
   weather = [];
-  timezone = [];
   wind = [];
+  desc = [];
+  icon = ''
 
 
   form = new FormGroup({
@@ -28,7 +29,7 @@ export class AppComponent {
   onSubmit() {
     //console.log(this.form.get("location")?.value);
     this.apiService.getData(this.form.value?.location).subscribe(data => {
-      //console.log(data);
+      console.log(data);
       this.data = data;
       console.log(this.data);
       this.temp = data.main.temp;
@@ -37,6 +38,12 @@ export class AppComponent {
       console.log(this.weather);
       this.wind = data.wind.speed;
       console.log(this.wind);
+      this.desc = data.weather[0].description;
+      console.log(this.desc);
+      this.icon = data.weather[0].icon;
+      console.log(this.icon);
+      const iconUrl = `http://openweathermap.org/img/wn/${this.icon}@2x.png`;
+      console.log(iconUrl);
     });
     this.show = true;
   }
