@@ -1,39 +1,72 @@
-h1{
-  text-align: center;
-  font-family: cursive;
-  margin-top: 10px;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-
-form{
-  mat-label{
-    font-family: cursive;
-  }
-  mat-form-field{
-    font-family: cursive;
-  }
-  input{
-    font-family: cursive;
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      transition: background-color 5000s ease-in-out 0s;
-    }
-  }
-}
-
-.row{
-  
-  .col{
+.weather-app {
     text-align: center;
-    margin-top: 10px;
-    font-family: cursive;
-  }
+}
+
+.weather-app h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.weather-app .search {
+    margin-bottom: 20px;
+}
+
+.weather-app .search input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.weather-app .search button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.weather-app .search button:hover {
+    background: #0056b3;
+}
+
+.weather-app h2 {
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+.weather-app .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.weather-app .day-weather {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.weather-app .day-weather h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.weather-app .day-weather p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .weather-app .container {
+        flex-direction: column;
+    }
 }

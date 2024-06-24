@@ -1,23 +1,41 @@
-<h1>Weather App</h1>
-<div class="container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field hintLabel="City Name" appearance="outline">
-      <mat-label>Enter location Name</mat-label>
-      <input matInput type="text" formControlName="location">
-    </mat-form-field>
-  </form>
-</div>
-<div class="row" *ngIf="show">
-  <div class="col">
-    Temperature is {{this.temp}} &deg; C
+<div class="weather-app">
+  <h1>Weather App</h1>
+  <div class="search">
+    <input type="text" [(ngModel)]="city" placeholder="Enter city" />
+    <button (click)="onCityChange(city)">Search</button>
   </div>
-  <div class="col">
-    Weather is {{this.weather}}
-  </div>
-  <div class="col">
-    Wind is {{this.wind}}
-  </div>
-  <div class="col">
-    Description : {{this.desc}}
+
+  <div *ngIf="weatherData">
+    <h2>{{ city | titlecase }}</h2>
+    
+    <div class="container">
+      <div class="day-weather">
+        <h3>Previous Day</h3>
+        <img [src]="getWeatherIcon(weatherData.previousDay.icon)" alt="Weather icon">
+        <p>{{ weatherData.previousDay.description | titlecase }}</p>
+        <p>Temperature: {{ weatherData.previousDay.temp }}°C</p>
+        <p>Humidity: {{ weatherData.previousDay.humidity }}%</p>
+        <p>Wind Speed: {{ weatherData.previousDay.windSpeed }} m/s</p>
+      </div>
+  
+      <div class="day-weather">
+        <h3>Current Day</h3>
+        <img [src]="getWeatherIcon(weatherData.currentDay.icon)" alt="Weather icon">
+        <p>{{ weatherData.currentDay.description | titlecase }}</p>
+        <p>Temperature: {{ weatherData.currentDay.temp }}°C</p>
+        <p>Humidity: {{ weatherData.currentDay.humidity }}%</p>
+        <p>Wind Speed: {{ weatherData.currentDay.windSpeed }} m/s</p>
+      </div>
+  
+      <div class="day-weather">
+        <h3>Next Day</h3>
+        <img [src]="getWeatherIcon(weatherData.nextDay.icon)" alt="Weather icon">
+        <p>{{ weatherData.nextDay.description | titlecase }}</p>
+        <p>Temperature: {{ weatherData.nextDay.temp }}°C</p>
+        <p>Humidity: {{ weatherData.nextDay.humidity }}%</p>
+        <p>Wind Speed: {{ weatherData.nextDay.windSpeed }} m/s</p>
+      </div>
+    </div>
+
   </div>
 </div>
